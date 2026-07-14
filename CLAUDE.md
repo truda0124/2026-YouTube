@@ -131,7 +131,7 @@ gpt-image-2 在 edit 模式下會延續人物的臉、髮型、體型、穿著�
 ## 三處同步指引
 | 平台 | 路徑 / 位置 | 用途 |
 |------|-------------|------|
-| Google Drive | `G:\我的雲端硬碟\2026Youtube\` | 主要工作目錄，Claude Code / Codex 直接讀寫 |
+| Google Drive | `G:\我的雲端硬碟\08_教學影片\` | 主要工作目錄，Claude Code / Codex 直接讀寫 |
 | Obsidian | `2026Youtube/` | 第二大腦，存創意點子與工作筆記 |
 | GitHub | `mathruffian-dot/2026-YouTube` | 版本控制與備份（私有） |
 
