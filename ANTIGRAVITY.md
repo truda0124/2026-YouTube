@@ -43,6 +43,6 @@
 
 - **生圖**：我原生擁有強大的 `generate_image` 工具。生圖不需設定任何 OpenAI API Key，只要直接對我說「畫一張封面圖」，我就能為您生成高畫質的圖像。
 - **人物基準照與風格規範**：
-  - **每一次封面都必須重新參考 `assets/persona/三師爸人物形象照.png`**（不可沿用舊封面或衍生圖）。
+  - **每一次封面都必須重新參考 `assets/persona/人物形象照.png`**（不可沿用舊封面或衍生圖）。
   - 風格與配色請依據 `assets/style/cover-style.md`。
   - Codex/Antigravity 版的主代表色為：亮藍 / 電子青 (`#00D4FF`、`#0099FF`)。

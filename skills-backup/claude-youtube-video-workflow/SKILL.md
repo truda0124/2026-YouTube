@@ -11,13 +11,13 @@ description: Claude Code 專用的 2026Youtube 總控工作流 Skill。當使用
 - `CLAUDE.md`
 - `assets/style/reference-thumbnails.png`
 - `assets/style/cover-style.md`
-- `assets/persona/三師爸人物形象照.png`
+- `assets/persona/人物形象照.png`
 
 ## Claude Code 專用規則
 
 - 封面使用 `skills/cover-image/draw.py` 或 Claude 全域 `~/.claude/skills/draw/draw.py`。
 - 需要 OpenAI API Key：`OPENAI_API_KEY` 或 `~/.openai.env`。
-- 產封面必帶 `--edit assets/persona/三師爸人物形象照.png`。
+- 產封面必帶 `--edit assets/persona/人物形象照.png`。
 - 每次封面都必須重新使用人物基準照，不得從上一張封面或衍生圖延續人物。
 - Claude 版代表色是橘色：`#FF8C42`、`#FFA500`、`#FF6B35`。
 - Claude 輸出資料夾固定加 `[Claude]` 後綴。
@@ -58,7 +58,7 @@ description: Claude Code 專用的 2026Youtube 總控工作流 Skill。當使用
      - 科技教學風格：深海軍藍背景、資料流、AI Agent、課程計畫表格。
    - 標準呼叫：
      ```powershell
-     python skills\cover-image\draw.py "<prompt>" --edit "assets\persona\三師爸人物形象照.png" --size 1536x1024 --quality low --name cover --outdir "output\<標題> [Claude]"
+     python skills\cover-image\draw.py "<prompt>" --edit "assets\persona\人物形象照.png" --size 1536x1024 --quality low --name cover --outdir "output\<標題> [Claude]"
      ```
    - 若輸出有時間戳檔名，整理為 `cover.png`。
 

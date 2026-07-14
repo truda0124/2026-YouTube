@@ -29,13 +29,13 @@ description: Claude Code 專用的 2026Youtube 總控工作流 Skill。當使用
 - `CLAUDE.md`
 - `assets/style/reference-thumbnails.png`
 - `assets/style/cover-style.md`
-- `assets/persona/三師爸人物形象照.png`
+- `assets/persona/人物形象照.png`
 
 ## Claude Code 專用規則
 
 - 封面使用 `skills/cover-image/draw.py` 或 Claude 全域 `~/.claude/skills/draw/draw.py`。
 - 需要 OpenAI API Key：`OPENAI_API_KEY` 或 `~/.openai.env`。
-- 產封面必帶 `--edit assets/persona/三師爸人物形象照.png`。
+- 產封面必帶 `--edit assets/persona/人物形象照.png`。
 - 每次封面都必須重新使用人物基準照，不得從上一張封面或衍生圖延續人物。
 - Claude 版代表色是橘色：`#FF8C42`、`#FFA500`、`#FF6B35`。
 - Claude 輸出資料夾固定加 `[Claude]` 後綴。
@@ -89,7 +89,7 @@ description: Claude Code 專用的 2026Youtube 總控工作流 Skill。當使用
    - **生封面前 SOP（缺一不可、每次都要做）**：
      a. `Read assets/style/reference-thumbnails.png`（看頻道既有 12 張封面）
      b. `Read assets/style/cover-style.md`（讀完整風格指南）
-     c. `Read assets/persona/三師爸人物形象照.png`（每次重新讀人物基準照；不可沿用舊封面）
+     c. `Read assets/persona/人物形象照.png`（每次重新讀人物基準照；不可沿用舊封面）
      d. 依影片主角決定主色：Claude=橘 / Codex=藍 / 兩者並用=橘+藍
    - Claude 版主色固定：`#FF8C42`、`#FFA500`、`#FF6B35`
    - **Prompt 範本**（已實測有效，依影片內容微調）：
@@ -112,7 +112,7 @@ description: Claude Code 專用的 2026Youtube 總控工作流 Skill。當使用
      ```
    - 標準呼叫：
      ```powershell
-     python skills\cover-image\draw.py "<prompt>" --edit "assets\persona\三師爸人物形象照.png" --size 1536x1024 --quality low --name cover --outdir "output\<標題> [Claude]"
+     python skills\cover-image\draw.py "<prompt>" --edit "assets\persona\人物形象照.png" --size 1536x1024 --quality low --name cover --outdir "output\<標題> [Claude]"
      ```
    - 跑完整理：刪掉時間戳檔名版本，留 `cover.png` 一份；用 Read 工具看一眼封面確認人物樣貌正確。
 

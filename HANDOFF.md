@@ -6,9 +6,17 @@
 ---
 
 ## 目前狀態（最新）
-- **更新時間**：2026-07-12（深夜）
-- **最後操作者**：Claude Code（Fable 5）
-- **進度**：**AI Agent 基本功 EP05（三層一次講清楚：技能/全域/專案）長片＋3 指定短片全流程交付完成** ✅
+- **更新時間**：2026-07-14
+- **最後操作者**：Claude Code（Sonnet 5）
+- **進度**：**新機器環境搬遷 + 人物基準照更換**（無新影片處理，純環境設定）✅
+  - 專案從 GitHub `mathruffian-dot/2026-YouTube` clone 到新機器，本機工作目錄改為 `G:\我的雲端硬碟\08_教學影片\`（原本是 `2026Youtube`，folder 改名）
+  - **GitHub 推送權限變更**：此機器 `gh` 帳號是 `truda0124`，對 `mathruffian-dot/2026-YouTube` 只有讀權限、無寫入權限。已 fork 成 `truda0124/2026-YouTube`，本機 `origin` 改指向此 fork，`upstream` 保留指回 `mathruffian-dot/2026-YouTube`。**之後 push 都會推到 truda0124 的 fork**，不是原始 repo。
+  - 已更新文件中所有 `G:\我的雲端硬碟\2026Youtube\` 路徑引用 → `08_教學影片`（CLAUDE.md、ANTIGRAVITY.md、兩份 marketing-spec.md），以及 CLAUDE.md 同步表的 GitHub 欄位
+  - **人物基準照已更換**：舊的「三師爸人物形象照.png」（男性、黑色連帽外套、眼鏡）從未被帶到這台新機器（該檔案被 `.gitignore`）。使用者提供新照片（女性、長髮、米色西裝外套），存為 `assets/persona/人物形象照.png`。已同步更新所有引用檔名與穿著描述的文件：`CLAUDE.md`、`AGENTS.md`、`ANTIGRAVITY.md`、`assets/persona/README.md`、`assets/style/cover-style.md`、`skills/claude-youtube-video-workflow/SKILL.md`、`skills/codex-youtube-video-workflow/SKILL.md`、`skills/short-video-workflow/SKILL.md`、`skills-backup/*/SKILL.md`
+  - **⚠️ 下一次生封面前務必確認**：`assets/style/reference-thumbnails.png`（頻道既有 12 張封面參考圖）與 `assets/style/cover-style.md` 的整體視覺風格（深藍科技底、Claude=橘/Codex=藍配色規則）都還是延續舊頻道「三師爸」的調性，只有人物本身換了。若新頻道識別、色調也要換，需再另外調整
+  - **環境設定進度**：Groq API Key ✅（`~/.groq_api_key`）、OpenAI API Key ✅（`~/.openai.env`，使用者已完成帳戶儲值）、人物基準照 ✅；`raw/`／`working/`／`output/` 目前皆為空，尚無影片素材
+- **下一步**：等使用者丟第一支影片素材進 `raw/<代號>/`，開始跑標準工作流
+- **前一支（2026-07-12 深夜）**：**AI Agent 基本功 EP05（三層一次講清楚：技能/全域/專案）長片＋3 指定短片全流程交付完成** ✅
   - 來源：Downloads `AI Agent基本功 EP05_三層一次講清楚_搞定 技能_全域_專案.mp4`（61:46 / 2.1GB / 真 CFR）→ `raw/aiagent-ep05/`；smart-cut → 45:51（剪 25.8%）
   - 字幕：Groq 10872 字 → 修正版 resegment 998 段（**孤兒殘尾 0**，修復持續生效）→ 使用者授權清字全自動 → 156 段更正 → validate 通過 → 刪 1 抖內 → 最終 997 段 / 45:51
   - **本集詞彙更正重點**：Edge TTS 家族（HTTS/Agen DTS/HTS松任/STS，**先做保護避免被 Agent 規則掃到**）、Agent 家族超多變體（Aging/AGEN/A-GEN/Agin/Agen/AiGEN/A局/A群/Edging/ARH…）、agint.md→**AGENTS.md**、權域→全域、三層備員→備援、圖坑→Token、人民黨民→**人名檔名**（引用語音正規化規則的關鍵句）、Kamit加Push跟Pori→Commit加Push跟Pull、108克剛→108課綱、Gil repo→Skill repo、李俊尼Soyul→李俊儀SOIL、C-Dance→Seedance、Meta Bloodlib→Matplotlib、F5 MPEG→FFmpeg、三師爸的生意→聲音
@@ -289,15 +297,15 @@
 - PowerShell 操作含空白或 `[Claude]` / `[Codex]` 的路徑時要加引號；含中括號路徑建議用 `-LiteralPath`。
 - `clip_cut.py` 會把 `--segments` 自動依時間排序（避免重疊偵測），所以**無法做倒敘剪輯**。版本 B 原想先放結論再回開場，被排序成順敘，效果略弱於設計。下次要做倒敘需加 `--keep-order` 選項並改寫重疊驗證。
 
-## 封面生成規範（2026-05-10 新增、傍晚 v3 補強）
-**所有封面必須以 `assets/persona/三師爸人物形象照.png` 作為人物基準。**
-呼叫 `cover-image` Skill 時帶 `--edit assets/persona/三師爸人物形象照.png`。
+## 封面生成規範（2026-05-10 新增、傍晚 v3 補強；2026-07-14 更換人物基準照）
+**所有封面必須以 `assets/persona/人物形象照.png` 作為人物基準。**
+呼叫 `cover-image` Skill 時帶 `--edit assets/persona/人物形象照.png`。
 **每一次封面都必須重新讀取 / 參考這張人物形象照；不能從上一張已生成封面或任何衍生圖片延續人物。**
 
 **生封面前 SOP**：
 1. `Read assets/style/reference-thumbnails.png`（看頻道既有 12 張封面）
 2. `Read assets/style/cover-style.md`（讀風格指南）
-3. `Read assets/persona/三師爸人物形象照.png`（每次重新讀人物基準照，不可沿用舊封面）
+3. `Read assets/persona/人物形象照.png`（每次重新讀人物基準照，不可沿用舊封面）
 4. 依影片主角決定主色：**Claude=橘 / Codex=藍 / 兩者並用=橘+藍**
 5. 撰寫 prompt → 呼叫 cover-image Skill / Codex 內建 Image2
 

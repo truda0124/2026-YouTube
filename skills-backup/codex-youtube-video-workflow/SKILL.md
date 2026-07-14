@@ -11,13 +11,13 @@ description: Codex 專用的 2026Youtube 總控工作流 Skill。當使用者要
 - `AGENTS.md`
 - `assets/style/reference-thumbnails.png`
 - `assets/style/cover-style.md`
-- `assets/persona/三師爸人物形象照.png`
+- `assets/persona/人物形象照.png`
 
 ## Codex 專用規則
 
 - 封面使用 Codex 內建 Image2 生圖，不需要 OpenAI API Key。
 - 不要呼叫 `skills/cover-image/draw.py`；那是 Claude Code / API 路線。
-- 每次封面都必須重新參考 `assets/persona/三師爸人物形象照.png`，不得從上一張封面或衍生圖延續人物。
+- 每次封面都必須重新參考 `assets/persona/人物形象照.png`，不得從上一張封面或衍生圖延續人物。
 - Codex 版代表色是亮藍 / 電子青：`#00D4FF`、`#0099FF`，可少量用紫光 `#9D4EDD`。
 - Codex 輸出資料夾固定加 `[Codex]` 後綴。
 - 若內建 Image2 不能實際傳 reference image，只能用 prompt 約束人物特徵；若人物不像本人，明確回報限制並重生或改用支援圖片參考的流程。

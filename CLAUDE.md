@@ -45,7 +45,7 @@
 ├── projects/           # 一支影片開一個子資料夾，便於管理
 ├── assets/             # 跨影片共用素材
 │   └── persona/        # 人物形象基準照（封面強制使用）
-│       └── 三師爸人物形象照.png
+│       └── 人物形象照.png
 └── skills/             # 共用 Skill（Claude / Codex 皆可讀取）
     ├── smart-cut/      # 智能剪口播（auto-editor）
     ├── audio-to-srt/   # 語音轉字幕（Groq Whisper-large-v3-turbo）
@@ -57,16 +57,16 @@
 ## 封面規範（兩條線必讀）
 
 ### 1. 人物基準照
-**所有 YouTube 封面必須使用 `assets/persona/三師爸人物形象照.png` 作為人物基準。**
-呼叫 `cover-image` Skill 時帶 `--edit assets/persona/三師爸人物形象照.png` 參數。
-gpt-image-2 在 edit 模式下會延續人物的臉、髮型、體型、穿著（黑色連帽外套、眼鏡）。
+**所有 YouTube 封面必須使用 `assets/persona/人物形象照.png` 作為人物基準。**
+呼叫 `cover-image` Skill 時帶 `--edit assets/persona/人物形象照.png` 參數。
+gpt-image-2 在 edit 模式下會延續人物的臉、髮型、體型、穿著（米色西裝外套）。
 **每一次封面都必須重新讀取並使用這張人物基準照；不得從上一張已生成封面或任何衍生圖片延續人物。**
 
 ### 2. 視覺風格指南
 **生封面前的 SOP（缺一不可）：**
 1. `Read assets/style/reference-thumbnails.png` — 用 Read 工具看頻道既有 12 張封面參考圖
 2. `Read assets/style/cover-style.md` — 讀完整風格指南（色票、構圖、主題配色規則、prompt 範本）
-3. `Read assets/persona/三師爸人物形象照.png` — 每次重新讀人物基準照，不可沿用舊封面
+3. `Read assets/persona/人物形象照.png` — 每次重新讀人物基準照，不可沿用舊封面
 4. 依影片主角決定主色：**Claude=橘 / Codex=藍 / 兩者並用=橘+藍**
 5. 撰寫 prompt 後再呼叫 `cover-image` Skill
 
@@ -111,7 +111,7 @@ gpt-image-2 在 edit 模式下會延續人物的臉、髮型、體型、穿著�
 7. **使用者選定標題後**：
    - 把標題清洗成合法資料夾名 → 建 `output/<標題> [Claude]/`（你是 Claude Code，必加 `[Claude]` 後綴）
    - **平行**產出：
-     - 觸發 `cover-image` Skill 生封面（**必帶 `--edit assets/persona/三師爸人物形象照.png`**，用標題當素材）→ `output/<標題>/cover.png`
+     - 觸發 `cover-image` Skill 生封面（**必帶 `--edit assets/persona/人物形象照.png`**，用標題當素材）→ `output/<標題>/cover.png`
        > Codex 端不走此路，改用 Codex 內建 image 2 工具直接產出（細節見 `AGENTS.md`）
      - AI 寫 YouTube 影片描述 → 寫進 `metadata.md`
      - AI 寫社群貼文（FB / IG / Threads 各一）→ 寫進 `metadata.md`

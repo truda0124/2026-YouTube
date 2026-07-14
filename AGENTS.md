@@ -38,8 +38,8 @@ Codex 總控 Skill 另有備份副本：`skills-backup/codex-youtube-video-workf
 ### 封面生成（Codex 專用方式）
 你內建 image 2 生圖功能，**直接用內建工具產封面**，不需要 OpenAI API Key、不要跑 draw.py。
 但風格規範與人物基準照仍須遵守：
-- 把 `assets/persona/三師爸人物形象照.png` 當作人物基準傳給內建工具（如果內建工具支援 reference image）
-- **每一次封面都必須重新參考 `assets/persona/三師爸人物形象照.png`；不得從上一張已生成封面或任何衍生圖片延續人物。**
+- 把 `assets/persona/人物形象照.png` 當作人物基準傳給內建工具（如果內建工具支援 reference image）
+- **每一次封面都必須重新參考 `assets/persona/人物形象照.png`；不得從上一張已生成封面或任何衍生圖片延續人物。**
 - prompt 依 `assets/style/cover-style.md` 風格指南撰寫
 - 主色依影片主角決定（Claude=橘 / Codex=藍 / 兩者並用=橘+藍）
 - 輸出存到 `output/<標題>/cover.png`
@@ -55,7 +55,7 @@ Codex 總控 Skill 另有備份副本：`skills-backup/codex-youtube-video-workf
    - **封面 SOP**（缺一不可）：
      a. `Read assets/style/reference-thumbnails.png`（看頻道既有封面）
      b. `Read assets/style/cover-style.md`（讀完整風格指南）
-     c. `Read assets/persona/三師爸人物形象照.png`（每次重新讀人物基準照；不可沿用舊封面）
+     c. `Read assets/persona/人物形象照.png`（每次重新讀人物基準照；不可沿用舊封面）
      d. 依影片主角決定主色：Claude=橘 / Codex=藍 / 兩者並用=橘+藍
      e. 撰寫 prompt → **用你內建的 image 2 生圖工具**產封面（人物基準照當 reference image），存到 `output/<標題> [Codex]/cover.png`
    - AI 寫 metadata.md（描述 / 社群 / SEO，**SEO 區塊必含「YouTube 標籤欄位（直接複製）」逗號分隔版**）

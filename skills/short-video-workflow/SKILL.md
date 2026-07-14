@@ -178,7 +178,7 @@ python skills/short-video-workflow/scripts/make_vertical.py \
 **生封面前 SOP（缺一不可）**：
 1. `Read assets/style/reference-thumbnails.png`
 2. `Read assets/style/cover-style.md`
-3. `Read assets/persona/三師爸人物形象照.png`
+3. `Read assets/persona/人物形象照.png`
 4. 依影片主角決定主色：Claude=橘 / Codex=藍 / 兩者並用=橘+藍
 
 **短片封面額外要求**：
@@ -187,7 +187,7 @@ python skills/short-video-workflow/scripts/make_vertical.py \
 - 16:9 尺寸與長片同樣板
 
 呼叫方式：
-- **Claude Code**：`python skills/cover-image/draw.py "<prompt>" --edit "assets/persona/三師爸人物形象照.png" --size 1536x1024 --quality low --name cover --outdir "output/<標題> [Claude] (Short)/"`
+- **Claude Code**：`python skills/cover-image/draw.py "<prompt>" --edit "assets/persona/人物形象照.png" --size 1536x1024 --quality low --name cover --outdir "output/<標題> [Claude] (Short)/"`
 - **Codex**：用內建 Image2，不呼叫 draw.py
 
 ### Step 10：寫 metadata（短片版本）
