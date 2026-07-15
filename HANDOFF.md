@@ -6,16 +6,33 @@
 ---
 
 ## 目前狀態（最新）
-- **更新時間**：2026-07-14
+- **更新時間**：2026-07-15
 - **最後操作者**：Claude Code（Sonnet 5）
-- **進度**：**新機器環境搬遷 + 人物基準照更換**（無新影片處理，純環境設定）✅
+- **進度**：**mentor-blueprint（10-80-10法則：讓AI變身超級實習生，專題設計效率翻倍）長片全流程交付完成**（本頻道女性人物基準照第一支影片）✅
+  - **環境補齊**：這台新機器當時還缺 ffmpeg 與 auto-editor，本次一併用 winget / pip 裝好並驗證（`ffmpeg` 裝在 WinGet Packages 目錄，尚未加進這個 Bash 工具的常駐 PATH，之後每次呼叫 ffmpeg/auto-editor 相關腳本要記得 `export PATH="$PATH:/c/Users/user/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-8.1.2-full_build/bin"`）
+  - 來源：使用者放進 `raw/` 的 `導師藍圖：專題製作的四週_AI_路線圖.mp4`（10:42 / 52.5MB，1280x720 24fps **CFR**，免轉檔）→ 歸檔 `raw/mentor-blueprint/原始.mp4`
+  - smart-cut（threshold 0.06、margin `0sec,0.1sec`）→ 09:29（剪 11.4%，這位講者停頓本來就不多，剪除率遠低於其他集數屬正常）
+  - 轉字幕：Groq 2515 字 / 29 段（原始）→ resegment 212 段（平均 2.67s）→ apply_vocab 0 段機械替換（詞彙表是舊頻道 Claude/Codex 相關詞，這支主題完全不同，沒命中很正常）→ `find_dubious_terms.py` 自動掃描也是 0 命中（同理）→ **Claude 逐段人工通讀全文抓出 20+ 處 Whisper 聽錯**，STOP1 跟使用者確認 2 處中等信心猜測 → 34 段套用修正 → validate 通過（212 段全吻合）→ 未刪任何段落（無抖內/喊名）
+  - **本集詞彙更正重點**（新頻道主題，教育/專題製作類，之後同類影片可沿用）：
+    - 「四周」→**「四週」**（指時間週數，全篇 8 處統一）；「文献」→**「文獻」**（簡轉繁，3 處）
+    - 「十八十十法則」→**「10-80-10法則」**（對照後文 10%/80%/10% 的說明還原）；「十座」→**「施作」**（`shí zuò` 同音字）
+    - 「麥肯西」→**「麥肯錫」**（McKinsey）；「Kell Newport」→**「Cal Newport」**（《深度工作》作者）
+    - 「思維練」→**「思維鏈」**；「專制AI回答爛」→**「專治AI回答爛」**；「簡印」→**「剪映」**（CapCut，同音字）
+    - 「泡用/透用」→**「套用」**；「伸出」→**「產出」**；「打字圓」→**「打字員」**；「通理心」→**「同理心」**；「產平」→**「剷平」**；「放去」→**「放棄」**；「想土」→**「想吐」**；「作善」→**「作戰」**；「IGLINE」→**「IG、LINE」**
+    - **STOP1 使用者確認 2 處**：段12「心裡一定在低估」使用者選**維持原文不改**（我原本猜測是網路用語「OS」，使用者確認保留）；段103「不可以知道」使用者確認改為**「怎麼可能知道」**
+  - 標題：使用者選 #4「10-80-10法則：讓AI變身超級實習生，專題設計效率翻倍」（10 個候選見 `working/mentor-blueprint/titles.md`）
+  - 長片交付：`output/10-80-10法則：讓AI變身超級實習生,專題設計效率翻倍 [Claude]/`（5 檔齊全；封面橘色主題、10%/80%/10% 圓餅圖視覺化＋AI機器人圖示、人物延續新基準照）
+  - **本片使用新版人物基準照**（女性、長髮、米色西裝外套），封面 prompt 已依 CLAUDE.md/cover-style.md 更新後的穿著描述撰寫，人物延續效果正常
+  - 本次**未做短片**（使用者沒有要求，只跑階段 1 長片）
+  - 注意：`assets/style/reference-thumbnails.png` 與整體視覺風格仍是舊頻道「三師爸」調性（僅換人物），若這支新主題（教育/專題製作類，非 AI 工具測評類）之後要有自己的頻道識別，可能需要重新設計 cover-style.md
+- **下一步**：等使用者下一步指令（可能是幫這支影片補短片、或丟下一支素材）
+- **前一支（2026-07-14）**：**新機器環境搬遷 + 人物基準照更換**（無新影片處理，純環境設定）✅
   - 專案從 GitHub `mathruffian-dot/2026-YouTube` clone 到新機器，本機工作目錄改為 `G:\我的雲端硬碟\08_教學影片\`（原本是 `2026Youtube`，folder 改名）
   - **GitHub 推送權限變更**：此機器 `gh` 帳號是 `truda0124`，對 `mathruffian-dot/2026-YouTube` 只有讀權限、無寫入權限。已 fork 成 `truda0124/2026-YouTube`，本機 `origin` 改指向此 fork，`upstream` 保留指回 `mathruffian-dot/2026-YouTube`。**之後 push 都會推到 truda0124 的 fork**，不是原始 repo。
   - 已更新文件中所有 `G:\我的雲端硬碟\2026Youtube\` 路徑引用 → `08_教學影片`（CLAUDE.md、ANTIGRAVITY.md、兩份 marketing-spec.md），以及 CLAUDE.md 同步表的 GitHub 欄位
   - **人物基準照已更換**：舊的「三師爸人物形象照.png」（男性、黑色連帽外套、眼鏡）從未被帶到這台新機器（該檔案被 `.gitignore`）。使用者提供新照片（女性、長髮、米色西裝外套），存為 `assets/persona/人物形象照.png`。已同步更新所有引用檔名與穿著描述的文件：`CLAUDE.md`、`AGENTS.md`、`ANTIGRAVITY.md`、`assets/persona/README.md`、`assets/style/cover-style.md`、`skills/claude-youtube-video-workflow/SKILL.md`、`skills/codex-youtube-video-workflow/SKILL.md`、`skills/short-video-workflow/SKILL.md`、`skills-backup/*/SKILL.md`
   - **⚠️ 下一次生封面前務必確認**：`assets/style/reference-thumbnails.png`（頻道既有 12 張封面參考圖）與 `assets/style/cover-style.md` 的整體視覺風格（深藍科技底、Claude=橘/Codex=藍配色規則）都還是延續舊頻道「三師爸」的調性，只有人物本身換了。若新頻道識別、色調也要換，需再另外調整
   - **環境設定進度**：Groq API Key ✅（`~/.groq_api_key`）、OpenAI API Key ✅（`~/.openai.env`，使用者已完成帳戶儲值）、人物基準照 ✅；`raw/`／`working/`／`output/` 目前皆為空，尚無影片素材
-- **下一步**：等使用者丟第一支影片素材進 `raw/<代號>/`，開始跑標準工作流
 - **前一支（2026-07-12 深夜）**：**AI Agent 基本功 EP05（三層一次講清楚：技能/全域/專案）長片＋3 指定短片全流程交付完成** ✅
   - 來源：Downloads `AI Agent基本功 EP05_三層一次講清楚_搞定 技能_全域_專案.mp4`（61:46 / 2.1GB / 真 CFR）→ `raw/aiagent-ep05/`；smart-cut → 45:51（剪 25.8%）
   - 字幕：Groq 10872 字 → 修正版 resegment 998 段（**孤兒殘尾 0**，修復持續生效）→ 使用者授權清字全自動 → 156 段更正 → validate 通過 → 刪 1 抖內 → 最終 997 段 / 45:51
