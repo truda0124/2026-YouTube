@@ -18,7 +18,7 @@ from pathlib import Path
 def get_stream_info(mp4_path: Path):
     cmd = [
         'ffprobe', '-v', 'error',
-        '-show_entries', 'stream=codec_type,sample_rate,channels,r_frame_rate,pix_fmt',
+        '-show_entries', 'stream=codec_type,sample_rate,channels,r_frame_rate,pix_fmt,width,height',
         '-of', 'json', str(mp4_path)
     ]
     try:
@@ -54,7 +54,10 @@ def main():
     # 取得原始視訊參數，若無則設為預設值
     fps = v_info.get('r_frame_rate', '30')
     pix_fmt = v_info.get('pix_fmt', 'yuv420p')
-    
+    width = v_info.get('width', 1920)
+    height = v_info.get('height', 1080)
+    fontsize = max(24, round(72 * width / 1920))
+
     # 取得原始音訊參數，若無則設為預設值
     sample_rate = a_info.get('sample_rate', '44100')
     channels = a_info.get('channels', 2)
@@ -73,7 +76,7 @@ def main():
     drawtext_filter = (
         f"drawtext=fontfile='{font_path}':"
         f"text='{text}':"
-        f"fontsize=72:"
+        f"fontsize={fontsize}:"
         f"fontcolor=0x00D4FF:"  # 霓虹亮藍色
         f"bordercolor=0xFFFFFF:" # 白色描邊
         f"borderw=3:"
@@ -81,11 +84,11 @@ def main():
         f"y=(h-text_h)/2"
     )
 
-    print(f"[INFO] 正在生成結尾字卡影片 (時長: {args.duration}s)...")
-    # 生成字卡 (含無聲音軌以匹配 concat)
+    print(f"[INFO] 正在生成結尾字卡影片 (時長: {args.duration}s, 解析度: {width}x{height})...")
+    # 生成字卡 (含無聲音軌以匹配 concat；解析度沿用來源影片，避免 concat 因尺寸不符失敗)
     cmd_gen_card = [
         'ffmpeg', '-y',
-        '-f', 'lavfi', '-i', f"color=c=0x0A192F:s=1920x1080:d={args.duration}:r={fps}",
+        '-f', 'lavfi', '-i', f"color=c=0x0A192F:s={width}x{height}:d={args.duration}:r={fps}",
         '-f', 'lavfi', '-i', f"anullsrc=r={sample_rate}:cl={layout}",
         '-vf', drawtext_filter,
         '-c:v', 'libx264', '-pix_fmt', pix_fmt,
